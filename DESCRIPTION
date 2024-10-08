@@ -48,7 +48,7 @@ biocViews: Software,
     Network
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports:
     Rcpp (>= 1.0.8),
     BiocParallel,
@@ -65,8 +65,7 @@ Imports:
     pheatmap,
     ggplot2,
     ggnetwork,
-    intergraph,
-    networkD3
+    intergraph
 Suggests:
     BiocStyle,
     ggtree,
@@ -75,7 +74,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    xml2
+    xml2,
+    networkD3
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 LinkingTo:

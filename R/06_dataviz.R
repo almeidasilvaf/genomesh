@@ -176,7 +176,6 @@ plot_profiles <- function(
 #' @return A ggplot object with the network.
 #' 
 #' @importFrom ggnetwork ggnetwork theme_blank geom_edges geom_nodes
-#' @importFrom networkD3 igraph_to_networkD3 forceNetwork
 #' @importFrom igraph graph_from_data_frame
 #' @importFrom ggplot2 aes ggplot scale_color_manual guides
 #' @importFrom grDevices colorRampPalette
@@ -241,6 +240,12 @@ plot_network <- function(network = NULL, clusters = NULL,
         palette <- colorRampPalette(custom_palette(1))(nlevels(genes$Group))
     }
     if(interactive) {
+        if(!requireNamespace("networkD3", quietly = TRUE)) {
+            stop(
+                "Package 'networkD3' is required for interactive visualizations.\n",
+                "You can install it with `BiocManager::install('networkD3')`."
+            )
+        }
         graph_d3 <- networkD3::igraph_to_networkD3(graph, group = genes)
         d <- dim_interactive
         p <- networkD3::forceNetwork(
@@ -250,6 +255,7 @@ plot_network <- function(network = NULL, clusters = NULL,
             height = d[2], width = d[1], Nodesize = 'Degree',
             opacity=0.8, zoom = TRUE, fontSize = 12
         )
+        
     } else {
         n <- ggnetwork::ggnetwork(graph, arrow.gap = 0)
         # Plot graph
