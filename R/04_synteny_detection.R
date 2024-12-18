@@ -260,7 +260,8 @@ infer_syntenet <- function(
     idx_equal <- which(names(blast_list) %in% equal_comp)
     
     #---- 1) Intraspecies synteny detection------------------------------------
-    intra_dir <- file.path(outdir, "intraspecies_synteny")
+    dirname1 <- paste0("intrasyn_", format(Sys.time(), "%Y-%m-%d_%Hh%M-%S"))
+    intra_dir <- file.path(outdir, dirname1)
     if(!dir.exists(intra_dir)) { dir.create(intra_dir, recursive = TRUE) }
     blast_intra <- blast_list[idx_equal]
     
@@ -277,7 +278,8 @@ infer_syntenet <- function(
     )
     
     #---- 2) Interspecies synteny detection------------------------------------
-    inter_dir <- file.path(outdir, "interspecies_synteny")
+    dirname2 <- paste0("intersyn_", format(Sys.time(), "%Y-%m-%d_%Hh%M-%S"))
+    inter_dir <- file.path(outdir, dirname2)
     if(!dir.exists(inter_dir)) { dir.create(inter_dir, recursive = TRUE) }
     blast_inter <- blast_list[-idx_equal]
     

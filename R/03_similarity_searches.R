@@ -46,9 +46,10 @@ run_diamond <- function(seq = NULL, top_hits = 5, verbose = FALSE,
     
     # 1. Make dbs for each species
     if(verbose) { message("1. Creating database for each species...\n") }
-    dbdir <- file.path(outdir, "diamond", "dbs")
-    seqdir <- file.path(outdir, "diamond", "seqs")
-    resdir <- file.path(outdir, "diamond", "results")
+    dirname <- paste0("diamond_", format(Sys.time(), "%Y-%m-%d_%Hh%M-%S"))
+    dbdir <- file.path(outdir, dirname, "dbs")
+    seqdir <- file.path(outdir, dirname, "seqs")
+    resdir <- file.path(outdir, dirname, "results")
     if(!dir.exists(dbdir)) { dir.create(dbdir, recursive = TRUE) }
     if(!dir.exists(seqdir)) { dir.create(seqdir, recursive = TRUE) }
     if(!dir.exists(resdir)) { dir.create(resdir, recursive = TRUE) }
@@ -126,9 +127,10 @@ run_last <- function(seq = NULL, verbose = FALSE,
     
     # 1. Make dbs for each species
     if(verbose) { message("1. Creating database for each species...\n") }
-    dbdir <- file.path(outdir, "last", "dbs")
-    seqdir <- file.path(outdir, "last", "seqs")
-    resdir <- file.path(outdir, "last", "results")
+    dirname <- paste0("last_", format(Sys.time(), "%Y-%m-%d_%Hh%M-%S"))
+    dbdir <- file.path(outdir, dirname, "dbs")
+    seqdir <- file.path(outdir, dirname, "seqs")
+    resdir <- file.path(outdir, dirname, "results")
     if(!dir.exists(dbdir)) { dir.create(dbdir, recursive = TRUE) }
     if(!dir.exists(seqdir)) { dir.create(seqdir, recursive = TRUE) }
     if(!dir.exists(resdir)) { dir.create(resdir, recursive = TRUE) }
